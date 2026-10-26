@@ -1,0 +1,11 @@
+{
+  "include": [
+    "backend",
+    "benchmarks",
+    "tests"
+  ],
+  "extraPaths": [
+    "backend",
+    "."
+  ]
+}

@@ -1,0 +1,11 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.pyright]
+include = ["backend", "benchmarks", "tests"]
+extraPaths = ["backend", "."]
+
+[tool.pytest.ini_options]
+pythonpath = ["backend", "."]
+testpaths = ["tests"]

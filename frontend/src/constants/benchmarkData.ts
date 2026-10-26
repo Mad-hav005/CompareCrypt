@@ -23,7 +23,7 @@ export interface BenchmarkDataSet {
   metrics: {
     plaintextFuzzy: ParadigmMetrics;
     exactPsi: ParadigmMetrics;
-    fuzzyCrypt: ParadigmMetrics;
+    compareCrypt: ParadigmMetrics;
   };
 }
 
@@ -58,9 +58,9 @@ export const EMPIRICAL_BENCHMARK_DATA: Record<10 | 50, BenchmarkDataSet> = {
         color: "#3b82f6", // blue
         description: "Cryptographic exact intersection hiding non-matching elements.",
       },
-      fuzzyCrypt: {
-        name: "FuzzyCrypt (Shingle Threshold-PSI)",
-        shortName: "FuzzyCrypt",
+      compareCrypt: {
+        name: "CompareCrypt (Shingle Threshold-PSI)",
+        shortName: "CompareCrypt",
         runtimeSec: 17.6375,
         perRecordMs: 1763.75,
         commKb: 89.19,
@@ -103,9 +103,9 @@ export const EMPIRICAL_BENCHMARK_DATA: Record<10 | 50, BenchmarkDataSet> = {
         color: "#3b82f6",
         description: "Cryptographic exact intersection hiding non-matching elements.",
       },
-      fuzzyCrypt: {
-        name: "FuzzyCrypt (Shingle Threshold-PSI)",
-        shortName: "FuzzyCrypt",
+      compareCrypt: {
+        name: "CompareCrypt (Shingle Threshold-PSI)",
+        shortName: "CompareCrypt",
         runtimeSec: 86.3936,
         perRecordMs: 1727.87,
         commKb: 470.26,

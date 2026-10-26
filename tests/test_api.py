@@ -148,7 +148,7 @@ def test_threshold_crypto_api_endpoint():
     assert result["alice_dataset_size"] == 3
     assert result["bob_dataset_size"] == 3
     assert result["threshold"] == 0.80
-    assert "FuzzyCrypt" in result["protocol_name"]
+    assert "CompareCrypt" in result["protocol_name"]
 
     matches = result["matches"]
     pair_map = {(m["alice_record"], m["bob_record"]): (m["dice_similarity"], m["intersection_count"]) for m in matches}

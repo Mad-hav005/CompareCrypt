@@ -42,7 +42,7 @@ export const ThresholdControl: React.FC<ThresholdControlProps> = ({
     );
   }
 
-  // FuzzyCrypt threshold
+  // CompareCrypt threshold
   return (
     <div className="space-y-3">
       {/* Label + value */}
@@ -79,7 +79,7 @@ export const ThresholdControl: React.FC<ThresholdControlProps> = ({
           className="flex items-center space-x-1 text-xs text-slate-600 hover:text-slate-400 transition-colors"
         >
           {detailsOpen ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
-          <span>How FuzzyCrypt protects the data</span>
+          <span>How CompareCrypt protects the data</span>
         </button>
 
         {detailsOpen && (

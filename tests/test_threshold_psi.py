@@ -1,5 +1,5 @@
 """
-Comprehensive test suite for FuzzyCrypt — Privacy-Preserving Shingle Similarity Matching (Phase 3).
+Comprehensive test suite for CompareCrypt — Privacy-Preserving Shingle Similarity Matching (Phase 3).
 
 Covers:
 - Deterministic unique bigram shingle generation with boundary markers

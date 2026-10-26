@@ -1,5 +1,5 @@
 """
-FastAPI application entrypoint for FuzzyCrypt.
+FastAPI application entrypoint for CompareCrypt.
 """
 
 from fastapi import FastAPI

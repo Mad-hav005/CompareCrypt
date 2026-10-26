@@ -9,7 +9,7 @@ interface ModeSelectorProps {
 
 const MODES: { id: MatchingMode; label: string }[] = [
   { id: 'entity_resolution', label: 'Entity Resolution' },
-  { id: 'fuzzycrypt', label: 'FuzzyCrypt' },
+  { id: 'comparecrypt', label: 'CompareCrypt' },
   { id: 'exact', label: 'Exact PSI' },
   { id: 'comparison', label: 'Benchmark' },
 ];

@@ -1,8 +1,8 @@
-# Implementation Specification: FuzzyCrypt — Privacy-Preserving Shingle Similarity Matching (Phase 3)
+# Implementation Specification: CompareCrypt — Privacy-Preserving Shingle Similarity Matching (Phase 3)
 
-**Project:** Secure Private Matching of Similar Data (FuzzyCrypt)  
+**Project:** Secure Private Matching of Similar Data (CompareCrypt)  
 **Stage:** Phase 3 Design Specification  
-**Construction Name:** FuzzyCrypt — Privacy-Preserving Shingle Similarity Matching  
+**Construction Name:** CompareCrypt — Privacy-Preserving Shingle Similarity Matching  
 **Status:** Pre-Implementation Specification (Revised Under Review)  
 
 ---
@@ -27,9 +27,9 @@ To maintain scientific accuracy, we explicitly clarify our relationship to the a
   - Benny Freedman, Kobbi Nissim, and Benny Pinkas (*"Efficient Private Matching and Set Intersection"*, EUROCRYPT 2004, LNCS 3027, Section 5: *"Fuzzy Matching and Threshold Set Intersection"*) established the theoretical foundation for evaluating set intersections under threshold constraints.
 - **OPRF-Based Private Set Operations**:
   - Carmit Hazay and Kobbi Nissim (*"Efficient, Semi-Honest and Malicious Two-Party Computation of Set Intersection and Set Similarity"*, EUROCRYPT 2010 / *Journal of Cryptology* 25(3), 2012) established relevant OPRF-based techniques for private set operations over small and structured domains.
-- **The FuzzyCrypt Construction**:
-  - **FuzzyCrypt implements a simplified semi-honest construction using 2Hash-DH OPRF + cryptographic shingles + overlap-based Dice thresholding.**
-  - We do **NOT** claim this is the exact Freedman-Nissim-Pinkas or Hazay-Nissim protocol. Those theoretical constructions use different cryptographic mechanisms, including homomorphic-encryption-based techniques. FuzzyCrypt instead uses a 2Hash-DH OPRF pipeline for its engineering prototype.
+- **The CompareCrypt Construction**:
+  - **CompareCrypt implements a simplified semi-honest construction using 2Hash-DH OPRF + cryptographic shingles + overlap-based Dice thresholding.**
+  - We do **NOT** claim this is the exact Freedman-Nissim-Pinkas or Hazay-Nissim protocol. Those theoretical constructions use different cryptographic mechanisms, including homomorphic-encryption-based techniques. CompareCrypt instead uses a 2Hash-DH OPRF pipeline for its engineering prototype.
 
 
 ---
@@ -187,7 +187,7 @@ We explicitly document what each party learns, including intentional leakages of
 
 ### 9.1 Security Assumptions:
 1. **Decisional Diffie-Hellman (DDH)**: Assumes DDH is computationally hard in the prime-order subgroup $QR_p$ of the RFC 3526 2048-bit group. Under DDH, Bob's PRF outputs $Z_{j, h}$ are computationally indistinguishable from random strings to any party that does not possess $k$.
-2. **Random Oracle Model (ROM)**: SHA-256 with distinct domain separation tags (`FUZZYCRYPT_DOMAIN_...`) behaves as a cryptographic random oracle.
+2. **Random Oracle Model (ROM)**: SHA-256 with distinct domain separation tags (`COMPARECRYPT_DOMAIN_...`) behaves as a cryptographic random oracle.
 3. **Semi-Honest Behavior**: Both parties follow protocol execution faithfully.
 4. **CSPRNG**: System entropy source via Python's `secrets` module.
 
@@ -300,7 +300,7 @@ Direct 3-way comparative benchmark evaluating across dataset sizes $N = 10, 50$:
 
 ## 16. Summary of Corrections Applied
 
-1. **Attribution & Relationship to Literature**: Clarified that Freedman et al. (2004) and Hazay & Nissim (2010) provide theoretical foundations; FuzzyCrypt implements a simplified semi-honest construction using 2Hash-DH OPRF + cryptographic shingles + Dice thresholding.
+1. **Attribution & Relationship to Literature**: Clarified that Freedman et al. (2004) and Hazay & Nissim (2010) provide theoretical foundations; CompareCrypt implements a simplified semi-honest construction using 2Hash-DH OPRF + cryptographic shingles + Dice thresholding.
 2. **Set vs. Multiset**: $S(x)$ is strictly defined as a set of unique $q$-grams.
 3. **Validated Example Maintained**: Kept `"Madhav Kumar"` vs. `"Madhav Kumer"` ($|S(x)|=13, |S(y)|=13$, intersection $= 11$, $\text{Dice} \approx 0.84615$, match at $0.80$, non-match at $0.90$).
 4. **Controlled Information Leakage Stated**: Explicitly documented that Alice receives grouped PRF digests and observes individual shingle-overlap counts.
@@ -311,4 +311,4 @@ Direct 3-way comparative benchmark evaluating across dataset sizes $N = 10, 50$:
 9. **Parameter $L$ Redefined**: Defined $L$ as the average number of unique shingles per record.
 10. **Metric Non-Equivalence Stated**: Clarified that Phase 2 Normalized Levenshtein and Phase 3 Sørensen-Dice are distinct metrics.
 11. **Scope and Security Boundary Added**: Added Section 1 detailing semi-honest model, absence of malicious guarantees, and student prototype status.
-12. **Construction Renamed**: Renamed throughout to *"FuzzyCrypt — Privacy-Preserving Shingle Similarity Matching"*.
+12. **Construction Renamed**: Renamed throughout to *"CompareCrypt — Privacy-Preserving Shingle Similarity Matching"*.

@@ -2,7 +2,7 @@
  * API contracts mirroring backend FastAPI schemas (app.models.schemas + app.models.er_schemas).
  */
 
-export type MatchingMode = 'fuzzycrypt' | 'exact' | 'comparison' | 'entity_resolution';
+export type MatchingMode = 'comparecrypt' | 'exact' | 'comparison' | 'entity_resolution';
 
 // Health Check Response
 export interface HealthResponse {
@@ -50,7 +50,7 @@ export interface FuzzyMatchResponse {
   policy: string;
 }
 
-// FuzzyCrypt (Cryptographic Shingle Threshold PSI)
+// CompareCrypt (Cryptographic Shingle Threshold PSI)
 export interface ThresholdMatchPair {
   alice_record_id: number;
   bob_record_id: number;

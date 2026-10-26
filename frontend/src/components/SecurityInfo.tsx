@@ -41,7 +41,7 @@ export const SecurityInfo: React.FC = () => {
           {/* Security note */}
           <div className="pl-4 border-l border-slate-800/80 space-y-1">
             <p className="text-[11px] text-slate-500 leading-relaxed">
-              FuzzyCrypt is a research prototype. It guarantees computational unlinkability under DDH
+              CompareCrypt is a research prototype. It guarantees computational unlinkability under DDH
               in QR_p against semi-honest participants.
             </p>
             <p className="text-[11px] text-slate-600 leading-relaxed">

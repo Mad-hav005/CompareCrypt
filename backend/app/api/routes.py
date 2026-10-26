@@ -65,7 +65,7 @@ async def match_fuzzy(request: FuzzyMatchRequest) -> FuzzyMatchResponse:
     "/threshold-crypto",
     response_model=ThresholdMatchResponse,
     status_code=status.HTTP_200_OK,
-    summary="Execute FuzzyCrypt Privacy-Preserving Shingle Similarity Matching",
+    summary="Execute CompareCrypt Privacy-Preserving Shingle Similarity Matching",
     description=(
         "Executes a semi-honest 2Hash-DH OPRF-based threshold Private Set Intersection "
         "over unique character bigram shingles. Matches pairs whose Sørensen-Dice similarity "

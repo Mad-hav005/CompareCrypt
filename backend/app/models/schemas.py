@@ -135,7 +135,7 @@ class ThresholdMatchResponse(BaseModel):
     bob_dataset_size: int = Field(..., description="Number of unique records in Bob's dataset")
     threshold: float = Field(..., description="Configured similarity threshold")
     protocol_name: str = Field(
-        default="FuzzyCrypt — Privacy-Preserving Shingle Similarity Matching (2Hash-DH OPRF)",
+        default="CompareCrypt — Privacy-Preserving Shingle Similarity Matching (2Hash-DH OPRF)",
         description="Underlying cryptographic protocol utilized",
     )
 

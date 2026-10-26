@@ -16,16 +16,16 @@ export const ComparisonDashboard: React.FC = () => {
     setOpen((prev) => ({ ...prev, [key]: !prev[key] }));
 
   const data = EMPIRICAL_BENCHMARK_DATA[selectedN];
-  const { plaintextFuzzy, exactPsi, fuzzyCrypt } = data.metrics;
+  const { plaintextFuzzy, exactPsi, compareCrypt } = data.metrics;
 
-  const maxRuntime = Math.max(plaintextFuzzy.runtimeSec, exactPsi.runtimeSec, fuzzyCrypt.runtimeSec);
-  const maxComm = Math.max(plaintextFuzzy.commKb, exactPsi.commKb, fuzzyCrypt.commKb);
-  const maxMem = Math.max(plaintextFuzzy.peakMemoryKb, exactPsi.peakMemoryKb, fuzzyCrypt.peakMemoryKb);
+  const maxRuntime = Math.max(plaintextFuzzy.runtimeSec, exactPsi.runtimeSec, compareCrypt.runtimeSec);
+  const maxComm = Math.max(plaintextFuzzy.commKb, exactPsi.commKb, compareCrypt.commKb);
+  const maxMem = Math.max(plaintextFuzzy.peakMemoryKb, exactPsi.peakMemoryKb, compareCrypt.peakMemoryKb);
 
   const paradigms = [
     { ...plaintextFuzzy, privacyLabel: 'No privacy', PrivacyIcon: ShieldOff, privacyColor: 'text-slate-500' },
     { ...exactPsi, privacyLabel: 'Exact matches only', PrivacyIcon: Shield, privacyColor: 'text-blue-400' },
-    { ...fuzzyCrypt, privacyLabel: 'Privacy-preserving · fuzzy matches', PrivacyIcon: Lock, privacyColor: 'text-indigo-400' },
+    { ...compareCrypt, privacyLabel: 'Privacy-preserving · fuzzy matches', PrivacyIcon: Lock, privacyColor: 'text-indigo-400' },
   ];
 
   return (
@@ -175,20 +175,20 @@ export const ComparisonDashboard: React.FC = () => {
                     <th className="pb-2 pr-8 text-slate-500 font-medium">Metric</th>
                     <th className="pb-2 pr-8 text-slate-500 font-medium">Plaintext Fuzzy</th>
                     <th className="pb-2 pr-8 text-slate-500 font-medium">Exact PSI</th>
-                    <th className="pb-2 text-indigo-400 font-medium">FuzzyCrypt</th>
+                    <th className="pb-2 text-indigo-400 font-medium">CompareCrypt</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-800/40 font-mono">
                   {[
                     ['Matching metric', 'Normalized Levenshtein', 'Exact equality', 'Unique bigram Sørensen-Dice'],
                     ['Cryptographic privacy', 'None', 'Computational (DDH)', 'Computational (DDH)'],
-                    ['Runtime', `${plaintextFuzzy.runtimeSec.toFixed(4)} s`, `${exactPsi.runtimeSec.toFixed(4)} s`, `${fuzzyCrypt.runtimeSec.toFixed(4)} s`],
-                    ['Per-record', `${plaintextFuzzy.perRecordMs.toFixed(2)} ms`, `${exactPsi.perRecordMs.toFixed(2)} ms`, `${fuzzyCrypt.perRecordMs.toFixed(2)} ms`],
-                    ['Payload', `${plaintextFuzzy.commKb.toFixed(2)} KB`, `${exactPsi.commKb.toFixed(2)} KB`, `${fuzzyCrypt.commKb.toFixed(2)} KB`],
-                    ['Peak memory', `${plaintextFuzzy.peakMemoryKb.toFixed(2)} KB`, `${exactPsi.peakMemoryKb.toFixed(2)} KB`, `${fuzzyCrypt.peakMemoryKb.toFixed(2)} KB`],
-                    ['Matches found', `${plaintextFuzzy.matches}`, `${exactPsi.matches}`, `${fuzzyCrypt.matches}`],
-                    ['Precision', `${plaintextFuzzy.precision.toFixed(4)}`, `${exactPsi.precision.toFixed(4)}`, `${fuzzyCrypt.precision.toFixed(4)}`],
-                    ['Recall', `${plaintextFuzzy.recall.toFixed(4)}`, `${exactPsi.recall.toFixed(4)}`, `${fuzzyCrypt.recall.toFixed(4)}`],
+                    ['Runtime', `${plaintextFuzzy.runtimeSec.toFixed(4)} s`, `${exactPsi.runtimeSec.toFixed(4)} s`, `${compareCrypt.runtimeSec.toFixed(4)} s`],
+                    ['Per-record', `${plaintextFuzzy.perRecordMs.toFixed(2)} ms`, `${exactPsi.perRecordMs.toFixed(2)} ms`, `${compareCrypt.perRecordMs.toFixed(2)} ms`],
+                    ['Payload', `${plaintextFuzzy.commKb.toFixed(2)} KB`, `${exactPsi.commKb.toFixed(2)} KB`, `${compareCrypt.commKb.toFixed(2)} KB`],
+                    ['Peak memory', `${plaintextFuzzy.peakMemoryKb.toFixed(2)} KB`, `${exactPsi.peakMemoryKb.toFixed(2)} KB`, `${compareCrypt.peakMemoryKb.toFixed(2)} KB`],
+                    ['Matches found', `${plaintextFuzzy.matches}`, `${exactPsi.matches}`, `${compareCrypt.matches}`],
+                    ['Precision', `${plaintextFuzzy.precision.toFixed(4)}`, `${exactPsi.precision.toFixed(4)}`, `${compareCrypt.precision.toFixed(4)}`],
+                    ['Recall', `${plaintextFuzzy.recall.toFixed(4)}`, `${exactPsi.recall.toFixed(4)}`, `${compareCrypt.recall.toFixed(4)}`],
                   ].map(([metric, pf, ep, fc]) => (
                     <tr key={metric} className="hover:bg-slate-900/30 transition-colors">
                       <td className="py-2 pr-8 text-slate-500 font-sans">{metric}</td>
@@ -211,7 +211,7 @@ export const ComparisonDashboard: React.FC = () => {
             className="w-full flex items-center justify-between text-left group"
           >
             <span className="text-sm text-slate-400 group-hover:text-slate-300 transition-colors">
-              Why is FuzzyCrypt slower?
+              Why is CompareCrypt slower?
             </span>
             {open.timing ? (
               <ChevronDown className="w-4 h-4 text-slate-600" />
@@ -222,7 +222,7 @@ export const ComparisonDashboard: React.FC = () => {
           {open.timing && (
             <div className="mt-4 space-y-4 text-sm text-slate-400">
               <p>
-                FuzzyCrypt performs 2048-bit modular exponentiations per shingle (character bigram).
+                CompareCrypt performs 2048-bit modular exponentiations per shingle (character bigram).
                 Each exponentiation is the dominant cost. Three protocol phases:
               </p>
               <div className="space-y-3">

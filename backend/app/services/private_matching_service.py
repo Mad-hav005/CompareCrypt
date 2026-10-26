@@ -90,7 +90,7 @@ class PrivateMatchingService:
 
     def perform_threshold_matching(self, request: ThresholdMatchRequest) -> ThresholdMatchResponse:
         """
-        Executes FuzzyCrypt Privacy-Preserving Shingle Similarity Matching.
+        Executes CompareCrypt Privacy-Preserving Shingle Similarity Matching.
 
         Args:
             request: ThresholdMatchRequest containing alice_data, bob_data, threshold.
@@ -127,7 +127,7 @@ class PrivateMatchingService:
             alice_dataset_size=len(alice_unique),
             bob_dataset_size=len(bob_unique),
             threshold=request.threshold,
-            protocol_name="FuzzyCrypt — Privacy-Preserving Shingle Similarity Matching (2Hash-DH OPRF)",
+            protocol_name="CompareCrypt — Privacy-Preserving Shingle Similarity Matching (2Hash-DH OPRF)",
         )
 
 

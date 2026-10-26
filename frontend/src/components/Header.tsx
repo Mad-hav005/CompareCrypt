@@ -16,7 +16,7 @@ export const Header: React.FC<HeaderProps> = ({ health, healthLoading, onRefresh
         <div className="flex items-center space-x-2.5">
           <Shield className="w-5 h-5 text-indigo-400" strokeWidth={2} />
           <div>
-            <span className="text-sm font-semibold text-white tracking-tight">FuzzyCrypt</span>
+            <span className="text-sm font-semibold text-white tracking-tight">CompareCrypt</span>
             <span className="hidden sm:inline text-sm text-slate-500 ml-2">
               Privacy-Preserving Similarity Matching
             </span>

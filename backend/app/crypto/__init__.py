@@ -1,5 +1,5 @@
 """
-Cryptographic package for FuzzyCrypt.
+Cryptographic package for CompareCrypt.
 """
 
 from app.crypto.crypto_interface import (

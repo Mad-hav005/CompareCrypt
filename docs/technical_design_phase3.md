@@ -1,6 +1,6 @@
 # Technical Design & Critical Review: Phase 3 — Fuzzy Matching & Cryptographic Private Set Intersection
 
-**Project:** Secure Private Matching of Similar Data (FuzzyCrypt)  
+**Project:** Secure Private Matching of Similar Data (CompareCrypt)  
 **Document Purpose:** Architectural Investigation, Mathematical Analysis, and Security Critique of Phase 3  
 **Status:** Revised Technical Assessment (Pre-Implementation Review)  
 

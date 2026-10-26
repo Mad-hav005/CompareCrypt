@@ -33,7 +33,7 @@ export const ResultsDashboard: React.FC<ResultsDashboardProps> = ({ result }) =>
             </span>
           </p>
         </div>
-        {result.mode === 'fuzzycrypt' && result.estimatedPayloadKb && (
+        {result.mode === 'comparecrypt' && result.estimatedPayloadKb && (
           <div className="text-right shrink-0">
             <p className="text-[11px] text-slate-600">Est. payload</p>
             <p className="text-xs font-mono text-slate-400">

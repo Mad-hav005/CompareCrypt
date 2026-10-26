@@ -159,7 +159,7 @@ def benchmark_fuzzy(
 def main():
     sizes = [10, 50, 100]
     print("=" * 85)
-    print("  FUZZYCRYPT BENCHMARK: EXACT OPRF-PSI vs DETERMINISTIC FUZZY BASELINE")
+    print("  COMPARECRYPT BENCHMARK: EXACT OPRF-PSI vs DETERMINISTIC FUZZY BASELINE")
     print("=" * 85)
 
     for n in sizes:

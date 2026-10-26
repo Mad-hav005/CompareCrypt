@@ -2,7 +2,7 @@
 Tri-Layer Benchmark Comparison:
 1. Plaintext Fuzzy Baseline (Normalized Levenshtein)
 2. Exact Cryptographic PSI Baseline (2Hash-DH OPRF-PSI)
-3. FuzzyCrypt — Privacy-Preserving Shingle Similarity Matching (Phase 3)
+3. CompareCrypt — Privacy-Preserving Shingle Similarity Matching (Phase 3)
 
 Measures and compares across dataset sizes:
 - Runtime (Total and per-record)
@@ -224,7 +224,7 @@ def main():
     #  Tracemalloc calibration is reported separately as profiling overhead, not as a correction factor.)
     sizes = [10, 50]
     print("=" * 105, flush=True)
-    print("  FUZZYCRYPT TRI-LAYER COMPARATIVE BENCHMARK", flush=True)
+    print("  COMPARECRYPT TRI-LAYER COMPARATIVE BENCHMARK", flush=True)
     print("  1. Plaintext Fuzzy (Levenshtein) | 2. Exact OPRF-PSI | 3. Cryptographic Shingle Threshold-PSI", flush=True)
     print("=" * 105, flush=True)
 
@@ -253,7 +253,7 @@ def main():
         print(f" DONE in {res_exact['runtime_sec']:.4f}s ({res_exact['matches_count']} matches, comm={res_exact['comm_kb']:.2f}KB)", flush=True)
 
         # 3. Cryptographic Shingle Threshold-PSI
-        print(f"[*] Case 3/3: Running FuzzyCrypt Shingle Threshold-PSI for N={n} (Modular Exponentiations on Shingles)...", flush=True)
+        print(f"[*] Case 3/3: Running CompareCrypt Shingle Threshold-PSI for N={n} (Modular Exponentiations on Shingles)...", flush=True)
         res_thresh = benchmark_threshold_crypto_psi(alice_data, bob_data, gt_similar, threshold=0.80)
         print(f"    -> Case 3/3 complete in {res_thresh['runtime_sec']:.4f}s ({res_thresh['matches_count']} matches, comm={res_thresh['comm_kb']:.2f}KB)", flush=True)
 

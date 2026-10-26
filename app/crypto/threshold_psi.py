@@ -1,5 +1,5 @@
 """
-FuzzyCrypt — Privacy-Preserving Shingle Similarity Matching (Phase 3).
+CompareCrypt — Privacy-Preserving Shingle Similarity Matching (Phase 3).
 
 Cryptographic Construction:
 - Underlying Group: RFC 3526 2048-bit MODP Group (Group 14), Quadratic Residue Subgroup QR_p.
@@ -215,7 +215,7 @@ class BobThresholdParty:
 
 class CryptographicThresholdPSI:
     """
-    Protocol orchestrator for FuzzyCrypt Privacy-Preserving Shingle Similarity Matching.
+    Protocol orchestrator for CompareCrypt Privacy-Preserving Shingle Similarity Matching.
     Simulates the two-party interaction between independent Alice and Bob instances.
     """
 

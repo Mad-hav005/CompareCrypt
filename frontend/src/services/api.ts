@@ -50,7 +50,7 @@ class ApiService {
     } catch (err: unknown) {
       if (err instanceof TypeError && err.message.includes('fetch')) {
         throw new Error(
-          `Unable to connect to FuzzyCrypt backend at ${API_BASE_URL}. Please ensure the FastAPI server is running.`
+          `Unable to connect to CompareCrypt backend at ${API_BASE_URL}. Please ensure the FastAPI server is running.`
         );
       }
       throw err instanceof Error ? err : new Error(String(err));
@@ -146,7 +146,7 @@ class ApiService {
       return (await response.json()) as UploadDatasetResponse;
     } catch (err: unknown) {
       if (err instanceof TypeError && err.message.includes('fetch')) {
-        throw new Error(`Unable to connect to FuzzyCrypt backend at ${API_BASE_URL}.`);
+        throw new Error(`Unable to connect to CompareCrypt backend at ${API_BASE_URL}.`);
       }
       throw err instanceof Error ? err : new Error(String(err));
     }

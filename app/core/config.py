@@ -13,7 +13,7 @@ class CryptoConfig(BaseModel):
 
 class Settings(BaseModel):
     """Application level settings."""
-    app_name: str = "FuzzyCrypt - Secure Private Matching"
+    app_name: str = "CompareCrypt - Secure Private Matching"
     app_version: str = "0.1.0"
     crypto: CryptoConfig = CryptoConfig()
 

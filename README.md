@@ -1,7 +1,7 @@
-# Secure Private Matching of Similar Data (FuzzyCrypt)
+# Secure Private Matching of Similar Data (CompareCrypt)
 
 ## 1. Project Title
-**Secure Private Matching of Similar Data (FuzzyCrypt)**
+**Secure Private Matching of Similar Data (CompareCrypt)**
 
 ---
 
@@ -25,15 +25,15 @@ The goal of this system is to enable Alice and Bob to determine which records in
 
 ## 4. Tri-Layer Architecture & How Matching Works
 
-FuzzyCrypt is built around three modular layers:
+CompareCrypt is built around three modular layers:
 
 ```
 +---------------------------------------------------------------------------------------------------------+
-|                                    FuzzyCrypt Tri-Layer Architecture                                    |
+|                                   CompareCrypt Tri-Layer Architecture                                   |
 +---------------------------------------------------------------------------------------------------------+
 | Layer 1: Plaintext Fuzzy Baseline     | Pairwise Normalized Levenshtein string distance                 |
 | Layer 2: Exact Cryptographic PSI      | 2Hash-DH OPRF over RFC 3526 2048-bit MODP Group (Group 14)     |
-| Layer 3: Privacy-Preserving Fuzzy-PSI | FuzzyCrypt — Privacy-Preserving Shingle Similarity Matching     |
+| Layer 3: Privacy-Preserving Fuzzy-PSI | CompareCrypt — Privacy-Preserving Shingle Similarity Matching   |
 +---------------------------------------------------------------------------------------------------------+
 ```
 
@@ -48,7 +48,7 @@ Computes exact set intersection over blinded representations in the RFC 3526 204
 2. **Bob** evaluates Alice's points: $B_i = (A_i)^k \bmod p$, and directly evaluates his own items: $Z_j = H_2(y_j, H_G(y_j)^k \bmod p)$.
 3. **Alice** unblinds $P_i = (B_i)^{r_i^{-1}} \bmod p = H_G(x_i)^k \bmod p$, finalizes $Y_i = H_2(x_i, P_i)$, and computes the intersection against $\{Z_j\}$.
 
-### Layer 3: FuzzyCrypt — Privacy-Preserving Shingle Similarity Matching (Phase 3)
+### Layer 3: CompareCrypt — Privacy-Preserving Shingle Similarity Matching (Phase 3)
 1. **Deterministic Unique Bigrams**: Each string is padded (`^`, `$`) and decomposed into a set of unique character 2-grams $S(x)$.
 2. **OPRF Shingle Evaluation**:
    - Alice blinds every unique shingle with an ephemeral random scalar $r_{i, g} \in_R [2, q-1]$ and sends tagged group points to Bob.
@@ -76,14 +76,14 @@ Computes exact set intersection over blinded representations in the RFC 3526 204
   - Prime-order subgroup: Quadratic Residues $QR_p = \{x^2 \bmod p : x \in \mathbb{Z}_p^*\}$.
 - **Group Mapping $H_G$**: Deterministic hash-and-square mapping into $QR_p \setminus \{1, p-1\}$.
 - **Randomness Source**: Python `secrets` module (operating-system CSPRNG).
-- **Hash Function & Domain Separation**: SHA-256 with explicit domain separation tags (`FUZZYCRYPT_DOMAIN_...`).
+- **Hash Function & Domain Separation**: SHA-256 with explicit domain separation tags (`COMPARECRYPT_DOMAIN_...`).
 
 ---
 
 ## 7. Project Architecture
 
 ```
-FuzzyCrypt/
+CompareCrypt/
 ├── backend/
 │   ├── app/
 │   │   ├── api/
@@ -211,7 +211,7 @@ Response:
   "alice_dataset_size": 3,
   "bob_dataset_size": 3,
   "threshold": 0.8,
-  "protocol_name": "FuzzyCrypt — Privacy-Preserving Shingle Similarity Matching (2Hash-DH OPRF)"
+  "protocol_name": "CompareCrypt — Privacy-Preserving Shingle Similarity Matching (2Hash-DH OPRF)"
 }
 ```
 *(Notice that at threshold 0.80, both "John Smith" and "Madhav Kumar" match. At threshold 0.90, the typo is rejected. Non-matching records "Rahul Sharma" and "Alice Brown" are strictly excluded).*
@@ -302,7 +302,7 @@ Modular exponentiation was observed to dominate protocol runtime. Bob's Phase 2 
 
 ## 14. Multi-Attribute Database Entity Resolution
 
-FuzzyCrypt includes a full **Privacy-Preserving Multi-Attribute Database Entity Resolution** engine:
+CompareCrypt includes a full **Privacy-Preserving Multi-Attribute Database Entity Resolution** engine:
 
 - **Heterogeneous Schema Ingestion**: Upload multi-column CSV or Excel files with disparate column names, types, and counts.
 - **Configurable Attribute Mapping**: Interactive mapping connecting Party A and Party B attributes with custom match strategies (`fuzzy`, `exact`, `ignore`).

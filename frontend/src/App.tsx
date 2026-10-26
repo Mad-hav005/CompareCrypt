@@ -93,7 +93,7 @@ export const App: React.FC = () => {
     let simulatedStage = 0;
     setCurrentStageIdx(0);
 
-    if (mode === 'fuzzycrypt') {
+    if (mode === 'comparecrypt') {
       progressTimer = setInterval(() => {
         simulatedStage++;
         if (simulatedStage < PROTOCOL_STAGES.length - 1) {
@@ -103,7 +103,7 @@ export const App: React.FC = () => {
     }
 
     try {
-      if (mode === 'fuzzycrypt') {
+      if (mode === 'comparecrypt') {
         const response = await apiService.runThresholdCrypto(aliceRecords, bobRecords, threshold);
         const elapsed = performance.now() - startTime;
 
@@ -113,7 +113,7 @@ export const App: React.FC = () => {
         const commBytes = totalAliceShingles * 260 + totalAliceShingles * 260 + totalBobShingles * 32;
 
         setResult({
-          mode: 'fuzzycrypt',
+          mode: 'comparecrypt',
           protocolName: response.protocol_name,
           aliceSize: response.alice_dataset_size,
           bobSize: response.bob_dataset_size,
@@ -290,7 +290,7 @@ export const App: React.FC = () => {
               </div>
 
               {/* ── Protocol stages (collapsible) ── */}
-              {mode === 'fuzzycrypt' && (
+              {mode === 'comparecrypt' && (
                 <ProtocolProgress
                   stages={stages}
                   currentStageIndex={currentStageIdx}
@@ -307,7 +307,7 @@ export const App: React.FC = () => {
 
       <footer className="border-t border-slate-800/40 py-6 text-center">
         <p className="text-xs text-slate-700">
-          FuzzyCrypt &mdash; Secure Private Matching of Similar Data &mdash; Academic Research Prototype
+          CompareCrypt &mdash; Secure Private Matching of Similar Data &mdash; Academic Research Prototype
         </p>
       </footer>
     </div>

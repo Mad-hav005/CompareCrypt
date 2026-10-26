@@ -1,4 +1,4 @@
 """
-FuzzyCrypt Entity Resolution package.
+CompareCrypt Entity Resolution package.
 Multi-attribute privacy-preserving record linkage.
 """

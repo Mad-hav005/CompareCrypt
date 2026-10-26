@@ -29,7 +29,7 @@ def domain_separated_hash(domain_tag: str, *data: Union[str, bytes]) -> bytes:
         32-byte digest.
     """
     hasher = hashlib.sha256()
-    hasher.update(f"FUZZYCRYPT_DOMAIN_{domain_tag}:".encode("utf-8"))
+    hasher.update(f"COMPARECRYPT_DOMAIN_{domain_tag}:".encode("utf-8"))
     for item in data:
         if isinstance(item, str):
             item = item.encode("utf-8")
